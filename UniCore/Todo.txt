@@ -1,0 +1,8 @@
+1. dao get and return Jpa objects;
+mappers map jpa object to business objects;
+services gets business objects;
+
+2. Cool solution to Bsp:
+public <T> T getDao(DaoConfig dao) {
+		return (T) daos.get(dao);
+	}

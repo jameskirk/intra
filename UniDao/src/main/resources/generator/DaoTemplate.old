@@ -1,0 +1,22 @@
+package %daoPackage%;
+
+import javax.persistence.EntityManager;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import %iDaoPackage%.%iDaoName%;
+import %entityPackage%.%entityName%;
+import com.uni.dao.util.UniJpaRepository;
+
+@Repository
+public class %daoName% extends UniJpaRepository<%entityName%, Integer> implements %iDaoName% {
+	
+	protected EntityManager em;
+	
+	@Autowired
+	public %daoName%(EntityManager em) {
+		super(%entityName%.class, em);
+		this.em = em;
+	}
+}

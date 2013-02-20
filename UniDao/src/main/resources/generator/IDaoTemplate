@@ -1,0 +1,9 @@
+package %iDaoPackage%;
+
+import com.uni.dao.util.IUniJpaRepository;
+
+import %entityPackage%.%entityName%;
+
+public interface %iDaoName% extends IUniJpaRepository<%entityName%, Integer> {
+
+}

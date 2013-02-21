@@ -35,6 +35,7 @@ http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 	<tx:annotation-driven transaction-manager="transactionManager" />
 	
 	<context:component-scan base-package="com.uni.dao.impl" />
+	<context:component-scan base-package="com.uni.test.dao" />
 	
 	<context:spring-configured />
 	<context:annotation-config />

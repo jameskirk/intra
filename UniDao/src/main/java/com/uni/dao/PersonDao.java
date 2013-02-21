@@ -14,12 +14,12 @@ public interface PersonDao {
 //	
 //	public void getUniGroup(int id);
 	
-	public <T> void addSomething(T source, ThingKind thingKind);
+	public <T> void addSomething1(T source, Class<T> type);
 	
-	public <T> T getSomething(int id, ThingKind thingKind, Class<T> t);
+	public <T> T getSomething(int id, Class<T> t);
 	
-	public void deleteSomething(int id, ThingKind thingKind);
+	public <T> void deleteSomething(int id, Class<T> t);
 	
-	public <T> void updateSomething(T source, ThingKind thingKind);
+	public <T> void updateSomething(T source, Class<T> t);
 	
 }

@@ -7,8 +7,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.SecondaryTable;
 
 @Entity
+@NamedQueries({
+    @NamedQuery(name="FIND_GROUPS_BY_FACULTY",
+                query="SELECT g FROM UniGroup g WHERE g.name = 'gr1'"),
+})
+@SecondaryTable(name="archival_unigroup")
 public class UniGroup {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -18,8 +26,6 @@ public class UniGroup {
 	private String name;
 	@ManyToOne(cascade=CascadeType.ALL)
 	private Department department;
-//	@OneToOne
-//	private Timetable timetable;
 
 	private int semester;
 	
@@ -42,14 +48,6 @@ public class UniGroup {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-//	public Timetable getTimetable() {
-//		return timetable;
-//	}
-//
-//	public void setTimetable(Timetable timetable) {
-//		this.timetable = timetable;
-//	}
 
 	public int getSemester() {
 		return semester;

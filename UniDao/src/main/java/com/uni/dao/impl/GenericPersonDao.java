@@ -1,20 +1,34 @@
 package com.uni.dao.impl;
 
+import java.util.HashMap;
 import java.util.Map;
 
-import com.uni.dao.util.UniJpaRepository;
+import javax.persistence.EntityManager;
+
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.uni.dao.etc.UniJpaRepository;
+import com.uni.dao.repo.SpecificRepoStudent;
 import com.uni.jpa.base.Student;
 import com.uni.jpa.base.UniGroup;
 
 public class GenericPersonDao {
 	
-	UniJpaRepository<UniGroup, Integer> uniRepo = new UniJpaRepository<UniGroup, Integer>(UniGroup.class, null);
+	private EntityManager em;
+	
+	public GenericPersonDao(EntityManager em) {
+		this.em = em;
+		map = new HashMap<Class<?>, UniJpaRepository<?,Integer>>();
+		init();
+	}
+	
+//	UniJpaRepository<UniGroup, Integer> uniRepo = new UniJpaRepository<UniGroup, Integer>(UniGroup.class, em);
 	
 	private Map<Class<?>, UniJpaRepository<?, Integer>> map;
 	
 	public void init() {
-		map.put(UniGroup.class, new UniJpaRepository<UniGroup, Integer>(UniGroup.class, null));
-		map.put(Student.class, new SpecificRepoStudent<Student>(null, null));
+		map.put(UniGroup.class, new UniJpaRepository<UniGroup, Integer>(UniGroup.class, em));
+		map.put(Student.class, new SpecificRepoStudent<Student>(Student.class, em));
 	}
 	
 	
@@ -23,9 +37,16 @@ public class GenericPersonDao {
 		if (map.containsKey(type)) {
 			((UniJpaRepository<T, Integer>) map.get(type)).saveAndFlush(source);
 		}
-		
-		// if not found in map - specific repo, few repo
-//		resolve(type).saveAndFlush(source);
+	}
+	
+	public <T> T getSomething(int id, Class<T> type) {
+		if (map.containsKey(type)) {
+			T source = ((UniJpaRepository<T, Integer>) map.get(type)).findOne(id);
+			System.out.println("getSmt");
+			return source;
+		}
+		System.out.println("getSmt null");
+		return null;
 	}
 
 	

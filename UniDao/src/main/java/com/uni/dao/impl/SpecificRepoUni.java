@@ -2,7 +2,7 @@ package com.uni.dao.impl;
 
 import javax.persistence.EntityManager;
 
-import com.uni.dao.util.UniJpaRepository;
+import com.uni.dao.etc.UniJpaRepository;
 import com.uni.jpa.base.UniGroup;
 
 public class SpecificRepoUni<T> extends UniJpaRepository<T, Integer>{

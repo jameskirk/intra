@@ -8,8 +8,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.uni.dao.PersonDao;
 import com.uni.dao.ThingKind;
+import com.uni.dao.util.JpaHelper;
 import com.uni.dao.util.UniJpaRepository;
 import com.uni.jpa.base.Department;
+import com.uni.jpa.base.Student;
 import com.uni.jpa.base.UniGroup;
 
 @Repository
@@ -29,6 +31,9 @@ public class PersonDaoImpl implements PersonDao {
 			UniGroup uniGroupSaved = uniRepo.saveAndFlush(uniGroup);
 			System.out.println(uniGroupSaved.getId());
 			break;
+		case STUDENT:
+			Student student = (Student) source;
+			JpaHelper.getInstance().getRepo(Student.class).saveAndFlush(student);
 		default:
 			break;
 		}

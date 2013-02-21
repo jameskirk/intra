@@ -21,8 +21,7 @@ public class PersonDaoImpl implements PersonDao {
 	@Autowired
 	private EntityManager em;
 
-	@Override
-	public <T> void addSomething(T source, ThingKind thingKind) {
+	public <T> void addSomething1(T source, ThingKind thingKind) {
 		switch (thingKind) {
 		case UNI_GROUP:
 			UniGroup uniGroup = (UniGroup) source;
@@ -44,8 +43,7 @@ public class PersonDaoImpl implements PersonDao {
 			new GenericPersonDao().addSomething(source, type);
 	}
 	
-	@Override
-	public <T> T getSomething(int id, ThingKind thingKind, Class<T> t) {
+	public <T> T getSomething1(int id, ThingKind thingKind, Class<T> t) {
 		switch (thingKind) {
 		case UNI_GROUP:
 			UniJpaRepository<UniGroup, Integer> uniRepo = new UniJpaRepository<UniGroup, Integer>(UniGroup.class, em);
@@ -59,20 +57,19 @@ public class PersonDaoImpl implements PersonDao {
 	}
 
 	@Override
-	public void deleteSomething(int id, ThingKind thingKind) {
-		switch (thingKind) {
-		case UNI_GROUP:
-			UniJpaRepository<UniGroup, Integer> uniRepo = new UniJpaRepository<UniGroup, Integer>(UniGroup.class, em);
-			uniRepo.delete(id);
-			break;
-		default:
-			break;
-		}
+	public <T> T getSomething(int id, Class<T> t) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public <T> void deleteSomething(int id, Class<T> t) {
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public <T> void updateSomething(T source, ThingKind thingKind) {
+	public <T> void updateSomething(T source, Class<T> t) {
 		// TODO Auto-generated method stub
 		
 	}

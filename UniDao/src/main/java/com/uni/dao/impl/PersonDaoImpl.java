@@ -41,7 +41,7 @@ public class PersonDaoImpl implements PersonDao {
 	}
 	
 	public <T> void addSomething1(T source, Class<T> type) {
-			new PersonDaoVC().addSomething(source, type);
+			new GenericPersonDao().addSomething(source, type);
 	}
 	
 	@Override

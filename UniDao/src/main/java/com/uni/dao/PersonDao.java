@@ -16,6 +16,8 @@ public interface PersonDao {
 	
 	public <T> void addSomething(T source, ThingKind thingKind);
 	
+	public <T> void addSomething1(T source, Class<T> type);
+	
 	public <T> T getSomething(int id, ThingKind thingKind, Class<T> t);
 	
 	public void deleteSomething(int id, ThingKind thingKind);

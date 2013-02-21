@@ -40,6 +40,10 @@ public class PersonDaoImpl implements PersonDao {
 		
 	}
 	
+	public <T> void addSomething1(T source, Class<T> type) {
+			new PersonDaoVC().addSomething(source, type);
+	}
+	
 	@Override
 	public <T> T getSomething(int id, ThingKind thingKind, Class<T> t) {
 		switch (thingKind) {
@@ -73,7 +77,5 @@ public class PersonDaoImpl implements PersonDao {
 		
 	}
 
-	
-	
 
 }

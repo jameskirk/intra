@@ -29,7 +29,8 @@ public class TestUserDao {
 		u.setDepartment(d);
 		d.setName("dep1");
 		u.setName("gr1");
-		dao.addSomething(u, ThingKind.UNI_GROUP);
+//		dao.addSomething(u, ThingKind.UNI_GROUP);
+		dao.addSomething1(u, UniGroup.class);
 	}
 	
 	private static void load() {
